@@ -1,7 +1,7 @@
 import useRM from "../hooks/useRM";
 
 const CharacterList = ({ character }) => {
-  const { addFavorites } = useRM();
+  const { addFavorites, getCharacterId } = useRM();
   return (
     <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col items-center pb-10">
@@ -23,7 +23,10 @@ const CharacterList = ({ character }) => {
           >
             Añadir a favoritos
           </button>
-          <button className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
+          <button
+            className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
+            onClick={() => getCharacterId(character.id)}
+          >
             Ver más...
           </button>
         </div>

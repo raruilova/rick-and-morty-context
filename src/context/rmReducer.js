@@ -1,4 +1,4 @@
-import {GET_CHARACTER, ADD_CHARACTER, DELETE_CHARACTER} from '../types';
+import {GET_CHARACTER, ADD_CHARACTER, DELETE_CHARACTER, GET_CHARACTER_ID} from '../types';
 
 export function rmReducer(state, action) {
     switch (action.type) {
@@ -18,6 +18,12 @@ export function rmReducer(state, action) {
             return {
                 ...state,
                 favoriteCharacter: state.favoriteCharacter.filter((deleteChar) => deleteChar.id !== action.payload.id)
+            }
+
+        case GET_CHARACTER_ID:
+            return {
+                ...state,
+                character: action.payload
             }
         default:
             state;

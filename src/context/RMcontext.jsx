@@ -2,7 +2,8 @@ import { createContext } from "react";
 
 const initialState = {
     characters: [],
-    favoriteCharacter: []
+    favoriteCharacter: [],
+    character: {}
 }
 
 const RMcontext = createContext(initialState);
