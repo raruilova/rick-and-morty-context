@@ -5,6 +5,7 @@ import {
   DELETE_CHARACTER,
   GET_CHARACTER,
   GET_CHARACTER_ID,
+  SEARCH_CHARACTER,
 } from "../types";
 import { initialState, RMcontext } from "./RMcontext";
 import { rmReducer } from "./rmReducer";
@@ -42,6 +43,17 @@ const RMprovider = ({ children }) => {
     navigate(`/character/${id}`);
   };
 
+  const searchCharacter = async (character) => {
+    try {
+      const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${character.toLowerCase()}`);
+      const data = await response.json();
+      dispatch({ type: SEARCH_CHARACTER, payload: data.results });
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+
   return (
     <RMcontext.Provider
       value={{
@@ -50,6 +62,7 @@ const RMprovider = ({ children }) => {
         addFavorites,
         deleteFavorite,
         getCharacterId,
+        searchCharacter
       }}
     >
       {children}
