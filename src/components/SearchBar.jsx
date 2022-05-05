@@ -31,12 +31,12 @@ const SearchBar = () => {
           <input
             type="submit"
             value="Buscar"
-            className="cursor-pointer mb-0 float-right py-2 px-1 bg-indigo-600 rounded mt-2 ml-2 text-white"
+            className="cursor-pointer mb-0 float-right py-2 px-1 bg-indigo-600 rounded mt-2 ml-2 text-white hover:bg-indigo-500"
           />
         </form>
         <button
           onClick={() => getData()}
-          className="float-right py-2 px-1 bg-emerald-700 mt-2 rounded text-white"
+          className="float-right py-2 px-1 bg-emerald-700 mt-2 rounded text-white hover:bg-emerald-600"
         >
           Todos los personajes
         </button>
