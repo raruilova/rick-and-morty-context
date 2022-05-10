@@ -9,6 +9,7 @@ import {
 } from "../types";
 import { initialState, RMcontext } from "./RMcontext";
 import { rmReducer } from "./rmReducer";
+import swal from "sweetalert";
 
 const RMprovider = ({ children }) => {
   const [state, dispatch] = useReducer(rmReducer, initialState);
@@ -26,10 +27,28 @@ const RMprovider = ({ children }) => {
 
   const addFavorites = (character) => {
     dispatch({ type: ADD_CHARACTER, payload: character });
+    swal("Añadido a favoritos!", "Correctamente",  "success");
   };
 
   const deleteFavorite = (character) => {
-    dispatch({ type: DELETE_CHARACTER, payload: character });
+    swal({
+      title: "Estas seguro?",
+      text: "Una vez eliminado, deberas añadir a favoritos tu personaje!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        dispatch({ type: DELETE_CHARACTER, payload: character });
+        swal("Poof! Tu personaje ha sido eliminado!", {
+          icon: "success",
+        });
+      } else {
+        swal("Tu personaje favorito no ha sido eliminado!");
+      }
+    });
+    
   };
 
   const getCharacterId = async (id) => {
